@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="">
-    <title>Document</title>
+    <link rel="stylesheet" href="styleAdmin.css">
+    <title>admin</title>
 </head>
 <body>
     <h1>ESTO ES ADMIN</h1>
@@ -13,7 +13,7 @@
         session_start();
         if(isset($_SESSION['userName'])){
             echo "Bienvenido ". $_SESSION['userName'];
-            echo "<a href='close.php'>Cerrar secion</a>";
+            echo "<a href='close.php'>Cerrar sesión</a>";
         }else{
             session_destroy();
             header('Location: login.php');

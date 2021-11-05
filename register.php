@@ -46,11 +46,8 @@
                         $consulta = "INSERT INTO usuarios (userName, userPass) VALUES ('$userName', '$passEncript');";
                         $resultado = mysqli_query($conex, $consulta);
                         header('Location: login.php');
-                    }
-                    
-                }
-            
-                
+                    }                   
+                }    
             }
         ?>
         <a href="login.php"> Ya tengo cuenta</a>
