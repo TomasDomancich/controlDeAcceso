@@ -12,7 +12,7 @@
 </head>
 <div class="containerAll">
     <body>
-        <h1>Acceso al Crud</h1>
+        <h1>Iniciar sesion</h1>
         <form action="" method="POST">
             <input type="text" name="userName" placeholder="Nombre" <?php if(isset($_COOKIE['userName'])){echo "value=".$_COOKIE['userName'];}?> required><br>
             <input type="password" name="userPass" placeholder="Contraseña"required><br>
@@ -33,9 +33,11 @@
                     while ($row = $result->fetch_array()) {
                         if($_POST['userName'] == $row['userName'] && password_verify($_POST['userPass'],$row['userPass'])){
                             $_SESSION['userName'] = $_POST['userName'];
+                            $_SESSION['userImg'] = $row['userImg'];
+
                             setcookie('userName',$_POST['userName'],time()+(60*60*24)*30);
                             $logged=1;
-                            header('Location: alumnosCrud/index.php');
+                            header('Location: admin.php');
                         }
                     }
                     if($logged==0){

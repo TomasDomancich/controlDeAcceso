@@ -56,3 +56,7 @@ a{
     background-color: lightcoral;
     font-weight: 900;
 }
+.userPicture{
+    width: 80%;
+    border-radius: 50%;
+}

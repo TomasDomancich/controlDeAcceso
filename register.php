@@ -16,15 +16,18 @@
         <form action="" method="POST">
             <input type="text" name="userName" placeholder="Nombre" required><br>
             <input type="password" name="userPass" placeholder="Contraseña" required><br>
-            <input type="password" name="passConfirm" placeholder="Confirme la contraseña" required><br>
+            <input type="password" name="passConfirm" placeholder="Confirmar contraseña" required><br>
+            <input type="mail" name="userMail" placeholder="Correo electronico" required><br>
             <input type="submit" name="register" value="registrar" class="send"><br>
             
         </form>
     
         <?php 
             $conex = mysqli_connect("Localhost","root","","Usuarios");
-    
-    
+            session_start();
+            
+
+            
             if(isset ($_POST['register'])){
             
                 $sql = "SELECT * FROM usuarios";
@@ -42,15 +45,17 @@
                         echo "<div class='error'>Las contraseñas no son iguales.</div>";
                     }else {
                         $userName = $_POST['userName'];
+                        $_SESSION['userName'] = $_POST['userName'];
+                        $userMail = $_POST['userMail'];
                         $passEncript = password_hash($_POST['userPass'], PASSWORD_DEFAULT);
-                        $consulta = "INSERT INTO usuarios (userName, userPass) VALUES ('$userName', '$passEncript');";
+                        $consulta = "INSERT INTO usuarios (userName, userPass, userMail) VALUES ('$userName', '$passEncript', '$userMail');";
                         $resultado = mysqli_query($conex, $consulta);
-                        header('Location: login.php');
+                        header('Location: insertImg.php');
                     }                   
                 }    
             }
         ?>
-        <a href="login.php"> Ya tengo cuenta</a>
+        <a href="index.php"> Ya tengo cuenta</a>
     </body>
 </div>
 </html>
