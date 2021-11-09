@@ -1,5 +1,5 @@
 <?php
-    $conex = mysqli_connect("Localhost","root","","Usuarios");
+    $conex = mysqli_connect("bs3j3ecshzthbbilraje-mysql.services.clever-cloud.com","upfsi19zbhkunqj2","OjuPi2PaaKwsKRpfRbkF","bs3j3ecshzthbbilraje");
 
     $editar_id = $_GET['update'];
 
@@ -16,7 +16,7 @@
 </br>
 <form method="POST" action="" enctype="multipart/form-data"> 
     <input type="hidden" name="id" value="<?php echo $id?>">
-    <input type="hidden" name="foto" value="<?php echo $foto?>">
+    <input type="hidden" name="fotovieja" value="<?php echo $foto?>">
     <input type="text" name="nombre" value="<?php echo $nombre?>" required></br>
     
     <input type="mail" name="mail" value="<?php echo $mail?>" required></br>
@@ -35,15 +35,12 @@
             $actualizar_archivo = $_FILES['foto']['name'];
             move_uploaded_file($_FILES['foto']['tmp_name'], 'images/'.$actualizar_archivo);
 		}else{
-            $actualizar_archivo = $_POST['foto'];
+            $actualizar_archivo = $_POST['fotovieja'];
         }
 
-        $sql = "UPDATE usuarios SET userName='$actualizar_nombre', userMail='$actualizar_mail', foto='$actualizar_archivo' WHERE userID='$editar_id'";
+        $sql = "UPDATE usuarios SET userName='$actualizar_nombre', userMail='$actualizar_mail', userImg='$actualizar_archivo' WHERE userID='$editar_id';";
 
-        $result = mysqli_query($conex,$sql);
-
-        // si te fijas los datos son guardados en la variables, tal vez el problema esta en el sql
-        // echo $actualizar_nombre. $actualizar_mail;
+        $result = mysqli_query($conex,$sql)? print('ok update') : print("error update");
     }
 ?>
 <div class='line'></div>

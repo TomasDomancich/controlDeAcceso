@@ -15,7 +15,7 @@
         <div class="headerUser">
             
             <?php 
-                $conex = mysqli_connect("Localhost","root","","Usuarios");
+                $conex = mysqli_connect("bs3j3ecshzthbbilraje-mysql.services.clever-cloud.com","upfsi19zbhkunqj2","OjuPi2PaaKwsKRpfRbkF","bs3j3ecshzthbbilraje");
                 session_start();
                     
                 if(isset($_SESSION['userName'])){
